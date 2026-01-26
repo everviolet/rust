@@ -17,17 +17,17 @@ steps:
     environment:
       BRANCH: *branch
       MESSAGE: *message
-      TOKEN:
-        from_secret: TOKEN
+      MIMI_TOKEN:
+        from_secret: MIMI_TOKEN
     commands:
       - |
         if git diff --quiet; then
           echo "no changes"
           exit 0
         fi
-      - git config --global user.name "woodpecker-bot"
-      - git config --global user.email "woodpecker-bot@noreply.codeberg.org"
-      - git remote set-url origin "https://${CI_REPO_OWNER}:$${TOKEN}@codeberg.org/${CI_REPO}.git"
+      - git config --global user.name "mimi"
+      - git config --global user.email "mimi@koi.rip"
+      - git remote set-url origin "https://${CI_REPO_OWNER}:$${MIMI_TOKEN}@codeberg.org/${CI_REPO}.git"
       - git checkout -b "$${BRANCH}"
       - git add src/palette.json
       - git commit -m "$${MESSAGE}"
@@ -38,7 +38,7 @@ steps:
     settings:
       gitea_address: https://codeberg.org
       gitea_token:
-        from_secret: TOKEN
+        from_secret: MIMI_TOKEN
       owner: ${CI_REPO_OWNER}
       repo: ${CI_REPO_NAME}
       base_branch: ${CI_REPO_DEFAULT_BRANCH}
