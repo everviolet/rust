@@ -2,6 +2,10 @@
 name = "evergarden"
 version = "0.1.0"
 edition = "2021"
+description = "🌹 cozy rust crate :3"
+homepage = "https://evergarden.moe"
+repository = "https://codeberg.org/evergarden/rust"
+license = "Apache-2.0"
 
 [package.metadata.docs.rs]
 all-features = true
